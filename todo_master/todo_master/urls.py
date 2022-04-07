@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from users.views import UserModelViewSet, ProjectModelViewSet, TODOModelViewSet
+from todo_master.users.views import UserModelViewSet
+from todo_master.apps_for_todo.views import ProjectModelViewSet, TODOModelViewSet
 
 router = DefaultRouter()
 router.register('users', UserModelViewSet)
