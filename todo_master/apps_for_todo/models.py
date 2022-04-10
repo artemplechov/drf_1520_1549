@@ -3,7 +3,7 @@ from django.db import models
 
 
 # Create your models here.
-from todo_master.users.models import User
+from users.models import User
 
 
 class Project(models.Model):
