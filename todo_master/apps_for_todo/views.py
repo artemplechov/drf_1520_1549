@@ -16,8 +16,8 @@ from .serializers import ProjectModelSerializer, TODOModelSerializer
 #    queryset = Project.objects.all()
 #    serializer_class = ProjectModelSerializer
 
-class ProjectLimitOffsetPagination(LimitOffsetPagination):
-    default_limit = 10
+#class ProjectLimitOffsetPagination(LimitOffsetPagination):
+#    default_limit = 10
 
 
 class ProjectCustomViewSet(ListModelMixin, CreateAPIView, DestroyModelMixin, RetrieveAPIView, UpdateAPIView,
@@ -26,11 +26,11 @@ class ProjectCustomViewSet(ListModelMixin, CreateAPIView, DestroyModelMixin, Ret
     serializer_class = ProjectModelSerializer
     renderer_class = [JSONRenderer, BrowsableAPIRenderer]
     filterset_class = ProjectFilter
-    pagination_class = ProjectLimitOffsetPagination
+    #pagination_class = ProjectLimitOffsetPagination
 
 
-class TODOLimitOffsetPagination(LimitOffsetPagination):
-    default_limit = 20
+#class TODOLimitOffsetPagination(LimitOffsetPagination):
+#    default_limit = 20
 
 
 
@@ -41,7 +41,7 @@ class TODOModelViewSet(ModelViewSet):
     serializer_class = TODOModelSerializer
     renderer_class = [JSONRenderer, BrowsableAPIRenderer]
     filterset_class = TODOFilter
-    pagination_class = TODOLimitOffsetPagination
+    #pagination_class = TODOLimitOffsetPagination
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
