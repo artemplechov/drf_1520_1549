@@ -6,15 +6,18 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.renderers import JSONRenderer, AdminRenderer, BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from rest_framework.permissions import IsAdminUser, BasePermission
+
+
 
 from .filters import ProjectFilter, TODOFilter
 from .models import Project, TODO
 from .serializers import ProjectModelSerializer, TODOModelSerializer
 
 
-# class ProjectModelViewSet(ModelViewSet):
-#    queryset = Project.objects.all()
-#    serializer_class = ProjectModelSerializer
+class DevelopersOnly(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_staff
 
 #class ProjectLimitOffsetPagination(LimitOffsetPagination):
 #    default_limit = 10

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'users',
     'apps_for_todo',
     'django_filters',
+    'rest_framework.authtoken',
 
 ]
 
@@ -131,12 +132,26 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+#from rest_framework.permissions import IsAuthenticated
+#from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
+#from rest_framework.permissions import IsAuthenticated
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+
+
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     #'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     #'PAGE_SIZE': 100
